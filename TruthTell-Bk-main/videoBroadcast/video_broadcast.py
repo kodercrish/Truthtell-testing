@@ -30,7 +30,8 @@ async def websocket_endpoint(websocket: WebSocket, room: str):
             event = data.get("event")
 
             if event == "room:join":
-                await websocket.send_json({"event": "room:join", "data": data})
+                role = data.get("data", {}).get("role", "viewer")
+                await websocket.send_json({"event": "room:join", "data": {"role": role}})
                 await broadcast_to_room(room, {"event": "user:joined", "data": {"id": id(websocket)}})
 
             elif event == "message:broadcast":

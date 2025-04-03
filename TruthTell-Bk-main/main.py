@@ -16,6 +16,7 @@ from routes.image_analysis import image_router
 from routes.audio_analysis import audio_router
 from routes.deepfake_audio import deepfake_audio_router
 from routes import video_broadcast
+from routes.video_chunk_analysis import router as video_chunk_router
 
 news_fetcher = NewsFetcher()
 
@@ -67,6 +68,7 @@ app.include_router(image_router, tags=["Image Analysis"])
 app.include_router(audio_router, tags=["Audio Analysis"])
 app.include_router(deepfake_audio_router, tags=["Audio Detection"])
 app.include_router(video_broadcast.router)
+app.include_router(video_chunk_router, prefix="/video-chunks", tags=["Video Chunk Analysis"])
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the API"}

@@ -273,6 +273,7 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TextBroadcast from "./broadcast/textBroadcast";
 import VideoBroadcast from "./broadcast/videoBroadcast";
+import ZegoVideoBroadcast from "./broadcast/zegoVideoBroadcast";
 
 export default function Broadcasts() {
   const [activeTab, setActiveTab] = useState("text");
@@ -290,7 +291,8 @@ export default function Broadcasts() {
         </TabsContent>
         
         <TabsContent value="video">
-          <VideoBroadcast />
+          {/* <VideoBroadcast /> */}
+          <ZegoVideoBroadcast />
         </TabsContent>
       </Tabs>
     </div>
